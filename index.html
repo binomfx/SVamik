@@ -150,7 +150,7 @@
 		fetch('help.json')
  			.then(response => response.json())
   			.then(jsonData => {
-				let d_help = jsonData; //JSON.parse(jsonData);
+				let d_help = jsonData;
 				document.getElementById('hlp1').innerHTML = d_help[1];
 				document.getElementById('hlp2').innerHTML = d_help[2];
 				document.getElementById('hlp3').innerHTML = d_help[3];
@@ -159,20 +159,12 @@
 				document.getElementById('hlp6').innerHTML = d_help[6];
 			}); 
 
-		d_constructor = {};
-		fetch('constructor.json')
-  			.then(response => response.json())
-  			.then(jsonData => {
-				d_constructor = jsonData; //JSON.parse(jsonData);
-			}); 
-		
-		d_templates = {};
-		fetch('templates.json')
-  			.then(response => response.json())
-  			.then(jsonData => {
-				d_templates = jsonData; //JSON.parse(jsonData);
-			}); 
-
+//		d_constructor = {};
+//		fetch('constructor.json')
+//  			.then(response => response.json())
+//  			.then(jsonData => {
+//				d_constructor = jsonData; //JSON.parse(jsonData);
+//			}); 
 		
 		const tg = window.Telegram.WebApp;
 
@@ -220,7 +212,8 @@
 			setNewPrompt();
 		});
 		tg.MainButton.show();
-		
+
+/*
 		function setNewPrompt() {
 			newPrompt = "";
 			if (document.getElementById('tab1').checked) { // Ручной ввод
@@ -240,6 +233,8 @@
 			}
 			tg.sendData(newPrompt);
 		}
+  */
+		
 </script>
 
 <!------------------------------------Вкладки (tabs)---------------------------------------->
@@ -251,10 +246,10 @@
   <label for="tab1">Главная</label>
     
   <input id="tab2" type="radio" name="tabs">
-  <label for="tab2">Конструктор</label>
+  <label for="tab2">Предметы</label>
     
   <input id="tab3" type="radio" name="tabs">
-  <label for="tab3">Шаблон</label>
+  <label for="tab3">Профиль</label>
 
   <input id="tab4" type="radio" name="tabs">
   <label for="tab4">Справка</label>
@@ -268,93 +263,16 @@
   </section>
     
   <section id="content2">
-      			<h2>Введите параметры конструктора:</h2>
+      			<h2>Предметы:</h2>
 			<p></p>
 	  		<p>
-				Роль:&nbsp;
-				<select id="role" name="role" required="required">
-					<option value="Аналитика">Аналитик</option>
-					<option value="Исследователя">Исследователь</option>
-					<option value="Юриста">Юрист</option>
-					<option value="Менеджера проекта">Менеджер проекта</option>
-					<option value="Продавца">Продавец</option>
-					<option value="Терапевта">Терапевт</option>
-					<option value="Программиста">Программист</option>
-					<option value="Инвестора">Инвестор</option>
-					<option value="Инженера">Инженер</option>
-					<option value="Промпт-инженера">Промпт-инженер</option>
-					<option value="Писателя">Писатель</option>
-					<option value="Тренера">Тренер</option>
-					<option value="Копирайтера">Копирайтер</option>
-				</select>
-			</p>
-			<p>
-				Задача:&nbsp;
-				<select id="task" name="task" required="required">
-					<option value="эссе">эссе</option>
-					<option value="письмо">письмо</option>
-					<option value="резюме">резюме</option>
-					<option value="перефразирование">перефразирование</option>
-					<option value="переформулирование">переформулирование</option>
-					<option value="упрощение">упрощение</option>
-					<option value="изменение">изменение</option>
-					<option value="обзор">обзор</option>
-					<option value="исследование">исследование</option>
-					<option value="анализ">анализ</option>
-					<option value="мнение">мнение</option>
-					<option value="гипотезу">гипотеза</option>
-					<option value="идею">идея</option>
-					<option value="классификацию">классификация</option>
-					<option value="решение">решение</option>
-					<option value="сопоставить разные точки зрения">разные точки зрения</option>
-					<option value="обобщение">обобщение</option>
-					<option value="извлечение">извлечение</option>
-					<option value="теги и ярлыки">теги и ярлыки</option>
-					<option value="заголовок">заголовок</option>
-					<option value="схему">схема</option>
-					<option value="набор">набор</option>
-					<option value="алгоритм">алгоритм</option>
-					<option value="программу">программа</option>
-				</select>
-			</p>
-			<p>
-				Уточнение задачи:&nbsp;
-				<textarea id="task2" name="task2" rows="1" cols="15"></textarea>
-			</p>
-			<p>
-				Формат результата:&nbsp;
-				<select id="format" name="format" required="required">
-					<option value="текста">текст</option>
-					<option value="списка">список</option>
-					<option value="таблицы">таблица</option>
-					<option value="HTML">HTML</option>
-					<option value="кода">код</option>
-				</select>
-			</p>
-			<p>
-				Стиль:&nbsp;
-				<select id="style1" name="style1" required="required">
-					<option value="деловой">деловой</option>
-					<option value="поплярный">популярный</option>
-					<option value="научный">научный</option>
-					<option value="художественный">художественный</option>
-				</select>
 			</p>
   </section>
     
   <section id="content3">
-      			<h2>Выберите шаблон:</h2>
+      			<h2>Профиль:</h2>
 			<p></p>
 	  		<p>
-				<select id="template" name="prompt_3">
-					<option value="1">Упрости сложную информацию</option>
-					<option value="2">Тренируйся, чтобы научиться писать правильно</option>
-					<option value="3">Применяй свои знания</option>
-					<option value="4">Сравнивай и противопоставляй</option>
-					<option value="5">Обобщи сложный текст</option>
-					<option value="6">Открытый вопрос</option>
-					<option value="7">Беседа</option>
-				</select>
 			</p>
   </section>
 
