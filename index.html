@@ -23,19 +23,19 @@
 
 	body {
 	  font: 14px/1 'Open Sans', sans-serif;
-	  color: var(--tg-theme-text-color);
-	  background: var(--tg-theme-secondary-bg-color);
+	  color: white;
+	  background: #225577;
 	}
 
 	h1 {
 	  padding: 10px;
 	  font-weight: 400;
 	  text-align: center;
-	  color: var(--tg-theme-text-color);
+	  color: white;
 	}
 
 	h2 {
-	  color: var(--tg-theme-link-color);
+	  color: white;
 	}
 
 	p { 
@@ -60,14 +60,14 @@
 	  padding: 1em;
 	  margin: 0 auto;
 	  background: #225577;
-	  color: var(--tg-theme-text-color);
+	  color: white;
 	}
 	
 	section {
 	  display: none;
 	  padding: 20px 0 0;
 	  border-top: 1px solid #ddd;
-	  color: var(--tg-theme-text-color);
+	  color: white;
 	}
 
 	input {
@@ -90,7 +90,7 @@
 	  padding: 15px 25px;
 	  font-weight: 600;
 	  text-align: center;
-	  color: var(--tg-theme-text-color);
+	  color: white;
 	  border: 1px solid transparent;
 	}
 
@@ -109,7 +109,7 @@
 	}
 
 	label[for*='3']:before {
-	  content: '\f0ca';
+	  content: '\f007';
 	}
 
 	label[for*='4']:before {
@@ -220,13 +220,13 @@
 		tg.expand();
 		tg.MainButton.setText("ПОМОГИ");
 		tg.MainButton.onClick(() => {     
-			setNewPrompt();
+			sendAppData();
 		});
 		tg.MainButton.show();
 
-/*
-		function setNewPrompt() {
-			newPrompt = "";
+
+		function sendAppData() {
+/*			newPrompt = "";
 			if (document.getElementById('tab1').checked) { // Ручной ввод
 				newPrompt = document.getElementById('prompt1').value;
 			} else if (document.getElementById('tab2').checked) { // Конструктор
@@ -243,8 +243,9 @@
 				tg.close();
 			}
 			tg.sendData(newPrompt);
-		}
-  */
+*/
+			tg.sendData("Данные из приложения.");
+  		}
 		
 </script>
 
