@@ -271,7 +271,6 @@ function getDevices() {
 function gotDevices(deviceInfos) {
     window.deviceInfos = deviceInfos; // make available to console
     console.log('Available input and output devices:', deviceInfos);
-}
 window.setTimeout(getStream, 10);
 }
 
