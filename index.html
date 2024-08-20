@@ -53,7 +53,19 @@
  	  height: 100%; /* Высота изображении */
  	  object-fit: cover; /* Вписываем фотографию в область */
 	}
- 
+
+	video {
+	  width: 100%; /* Ширина области */
+ 	  height: 400px; /* Высота области */
+ 	  margin: 0; /* Обнуляем отступы */
+	}
+	video img { 
+ 	  width: 100%; /* Ширина изображений */
+ 	  height: 100%; /* Высота изображении */
+ 	  object-fit: cover; /* Вписываем фотографию в область */
+	}
+	
+	
 	main {
 	  min-width: 220px;
 	  max-width: 600px;
@@ -246,6 +258,67 @@
 */
 			tg.sendData("Данные из приложения.");
   		}
+
+/******************************* VIDEO **************************************************/
+var videoElement = document.querySelector('video');
+getStream().then(getDevices).then(gotDevices);
+
+function getDevices() {
+    // AFAICT in Safari this only gets default devices until gUM is called :/
+    return navigator.mediaDevices.enumerateDevices();
+}
+
+function gotDevices(deviceInfos) {
+    window.deviceInfos = deviceInfos; // make available to console
+    console.log('Available input and output devices:', deviceInfos);
+}
+window.setTimeout(getStream, 10);
+}
+
+function getStream() {
+    if (window.stream) {
+        window.stream.getTracks().forEach(track => {
+            track.stop();
+        });
+    }
+    const videoSource = videoSelect.value;
+    const constraints = {
+        video: {
+            deviceId: videoSource ? {
+                exact: videoSource
+            } : undefined
+        }
+    };
+    return navigator.mediaDevices.getUserMedia(constraints).
+    then(gotStream).catch(handleError);
+}
+
+function gotStream(stream) {
+    window.stream = stream; // make stream available to console
+    if ('srcObject' in videoElement) {
+        videoElement.srcObject = stream;
+    } else {
+        videoElement.src = URL.createObjectURL(stream);
+    }
+}
+
+function handleError(error) {
+    console.error('Error: ', error);
+}
+
+function getImgUrl() {
+    let el = videoElement;
+    let canvas = document.createElement('canvas');
+    canvas.width = el.videoWidth;
+    canvas.height = el.videoHeight;
+    canvas.style.display = 'none';
+    document.body.appendChild(canvas);
+    canvas.getContext('2d').drawImage(el, 0, 0, canvas.width, canvas.height);
+    let cu = canvas.toDataURL();
+    document.body.removeChild(canvas);
+    return cu;
+}
+/****************************************************************************************/
 		
 </script>
 
@@ -280,6 +353,7 @@
 	  		<p>
 				Выбор материалов для изучения. <br>
 				Проверочные задания.
+				<video></video>
 			</p>
   </section>
     
