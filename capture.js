@@ -34,6 +34,20 @@
       console.log("An error occurred: " + err);
     });
 
+    //-------------------------------------------------
+    //navigator.mediaDevices.getUserMedia({ video: true })
+    //.then(stream => document.querySelector('video').srcObject = stream)
+    //.catch(err => console.error("Ошибка доступа к камере:", err));
+    //-------------------------------------------------
+    //navigator.mediaDevices.getUserMedia({ video: true })
+    //.then(stream => {
+    //  const videoElement = document.querySelector('video');
+    //  videoElement.srcObject = stream;
+      // Приступаем к обработке видеопотока
+    //})
+    //.catch(err => console.error("Проблемы с трансляцией:", err));
+    //----------------------------------------------------
+    
     video.addEventListener('canplay', function(ev){
       if (!streaming) {
         height = video.videoHeight / (video.videoWidth/width);
