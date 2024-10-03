@@ -1,0 +1,154 @@
+	@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+	@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+	*, *:before, *:after {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	}
+
+	html, body { 
+	  height: 100%;
+	}
+
+	body {
+	  font: 14px/1 'Open Sans', sans-serif;
+	  color: white;
+	  background: #225577;
+	}
+
+	h1 {
+	  padding: 10px;
+	  font-weight: 400;
+	  text-align: center;
+	  color: white;
+	}
+
+	h2 {
+	  color: white;
+	}
+
+	p { 
+	  margin: 0 0 20px; 
+	  line-height: 1.5; 
+	}
+
+	bg1 {
+	  width: 100%; /* Ширина области */
+ 	  height: 400px; /* Высота области */
+ 	  margin: 0; /* Обнуляем отступы */
+	}
+	bg1 img { 
+ 	  width: 100%; /* Ширина изображений */
+ 	  height: 100%; /* Высота изображении */
+ 	  object-fit: cover; /* Вписываем фотографию в область */
+	}
+
+	video {
+	  width: 100%; /* Ширина области */
+ 	  height: 400px; /* Высота области */
+ 	  margin: 0; /* Обнуляем отступы */
+	}
+	video img { 
+ 	  width: 100%; /* Ширина изображений */
+ 	  height: 100%; /* Высота изображении */
+ 	  object-fit: cover; /* Вписываем фотографию в область */
+	}
+	
+	
+	main {
+	  min-width: 220px;
+	  max-width: 600px;
+	  padding: 1em;
+	  margin: 0 auto;
+	  background: #225577;
+	  color: white;
+	}
+	
+	section {
+	  display: none;
+	  padding: 20px 0 0;
+	  border-top: 1px solid #ddd;
+	  color: white;
+	}
+
+	input {
+	  display: none;
+	}
+
+	textarea {
+	  color: var(--tg-theme-text-color);
+	  background: var(--tg-theme-secondary-bg-color);
+	}
+	
+	select {
+	  color: var(--tg-theme-text-color);
+	  background: var(--tg-theme-secondary-bg-color);
+	}
+	
+	label {
+	  display: inline-block;
+	  margin: 0 0 -1px;
+	  padding: 15px 25px;
+	  font-weight: 600;
+	  text-align: center;
+	  color: white;
+	  border: 1px solid transparent;
+	}
+
+	label:before {
+	  font-family: fontawesome;
+	  font-weight: normal;
+	  margin-right: 10px;
+	}
+
+	label[for*='1']:before {
+	  content: '\f015';
+	}
+
+	label[for*='2']:before {
+	  content: '\f02d';
+	}
+
+	label[for*='3']:before {
+	  content: '\f007';
+	}
+
+	label[for*='4']:before {
+	  content: '\f05a';
+	}
+
+	label:hover {
+	  color: #888;
+	  cursor: pointer;
+	}
+
+	input:checked + label {
+	  color: #d4d4d4;
+	  border: 1px solid #ddd;
+	  border-top: 2px solid orange;
+	  border-bottom: 1px solid #fff;
+	}
+
+	#tab1:checked ~ #content1,
+	#tab2:checked ~ #content2,
+	#tab3:checked ~ #content3,
+	#tab4:checked ~ #content4 {
+	  display: block;
+	}
+
+	@media screen and (max-width: 650px) {
+	  label {
+	    font-size: 0;
+	  }
+
+	  label:before {
+	    margin: 0;
+	    font-size: 18px;
+	  }
+	}
+	
+	@media screen and (max-width: 400px) {
+	  label {
+	    padding: 15px;
+	  }
+	}
